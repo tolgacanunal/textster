@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.text.method.LinkMovementMethod
 import android.text.style.BackgroundColorSpan
 import android.text.style.BulletSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.ScaleXSpan
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import com.tesleax.textster.AnnotationOption
@@ -24,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         mainThanksTextView.text = getXmlStyledString(
             stringResId = R.string.thanks_message,
             annotationOption = AnnotationOption(
-                replacementList = listOf("username" to "tesleax")
+                replacementList = listOf("username" to "user")
             )
         )
     }
@@ -47,15 +49,21 @@ class MainActivity : AppCompatActivity() {
         mainBulletTextView.text = getXmlStyledString(
             stringResId = R.string.bullet_message,
             annotationOption = AnnotationOption(
+                replacementList = listOf(
+                    "first_bullet_number" to "0"
+                ),
                 customAnnotations = listOf(
-                    "bullet0" to BulletSpan(),
-                    "bullet1" to BulletSpan(),
+                    "bullet1" to BulletSpan(
+                        15,
+                        ContextCompat.getColor(this, R.color.red)
+                    ),
                     "background0" to BackgroundColorSpan(
                         ContextCompat.getColor(this, R.color.teal_200)
                     ),
                     "background1" to BackgroundColorSpan(
-                        ContextCompat.getColor(this, R.color.purple_500)
-                    )
+                        ContextCompat.getColor(this, R.color.red_alpha10)
+                    ),
+                    "bullet_text_scale" to RelativeSizeSpan(1.5f)
                 )
             )
         )
