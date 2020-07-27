@@ -3,5 +3,5 @@
 
     <string name="thanks_message"><annotation type="bold">Thanks, </annotation><annotation type="bold"><annotation color="#FF5733"><annotation replacement="username">usernamePlaceholder</annotation></annotation></annotation></string>
     <string name="website_message"><annotation type="bold">Here is my GitHub, </annotation><annotation url="https://www.github.com/tolgacanunal"><annotation replacement="githuburl">githubUrlPlaceholder</annotation></annotation>\n<annotation font="ranchers"><annotation color="#1B743C"><annotation click="action2">Action 2</annotation></annotation></annotation></string>
-    <string name="bullet_message"><annotation type="bold">Bullet Texts</annotation>:\n<annotation custom="bullet0"><annotation custom="background0">Bullet</annotation> 0</annotation>\n<annotation custom="bullet1">Bullet <annotation custom="background1">1</annotation></annotation></string>
+    <string name="bullet_message"><annotation type="bold">Bullet Texts</annotation>:\n<annotation type="bullet"><annotation custom="background0">Bullet</annotation> 0</annotation>\n<annotation custom="bullet1">Bullet <annotation custom="background1">1</annotation></annotation></string>
 </resources>

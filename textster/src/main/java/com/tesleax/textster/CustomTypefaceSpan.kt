@@ -1,4 +1,4 @@
-package com.tesleax.texster
+package com.tesleax.textster
 
 import android.graphics.Typeface
 import android.text.TextPaint

@@ -1,4 +1,4 @@
-package com.tesleax.texster
+package com.tesleax.textster
 
 import android.content.Context
 import android.graphics.Color
@@ -67,6 +67,15 @@ private fun SpannableStringBuilder.replaceAnnotation(
     )
 }
 
+private fun SpannableStringBuilder.applySpan(span: Any, annotation: Annotation) {
+    setSpan(
+        span,
+        getSpanStart(annotation),
+        getSpanEnd(annotation),
+        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+    )
+}
+
 private fun SpannableStringBuilder.applyType(annotation: Annotation) {
     val span: Any? = when (annotation.value) {
         "bold" -> StyleSpan(Typeface.BOLD)
@@ -122,13 +131,4 @@ private fun SpannableStringBuilder.applyFontAnnotation(context: Context, annotat
     if (typeface != null) {
         applySpan(CustomTypefaceSpan(typeface), annotation)
     }
-}
-
-private fun SpannableStringBuilder.applySpan(span: Any, annotation: Annotation) {
-    setSpan(
-        span,
-        getSpanStart(annotation),
-        getSpanEnd(annotation),
-        Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-    )
 }

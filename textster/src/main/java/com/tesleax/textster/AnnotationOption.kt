@@ -1,4 +1,4 @@
-package com.tesleax.texster
+package com.tesleax.textster
 
 data class AnnotationOption(
     val replacementList: List<Pair<CharSequence, CharSequence>> = emptyList(),

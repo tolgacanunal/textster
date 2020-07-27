@@ -7,6 +7,8 @@ import android.text.style.BackgroundColorSpan
 import android.text.style.BulletSpan
 import android.widget.Toast
 import androidx.core.content.ContextCompat
+import com.tesleax.textster.AnnotationOption
+import com.tesleax.textster.getXmlStyledString
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -36,8 +38,18 @@ class MainActivity : AppCompatActivity() {
                 customAnnotations = listOf(
                     "bullet0" to BulletSpan(),
                     "bullet1" to BulletSpan(),
-                    "background0" to BackgroundColorSpan(ContextCompat.getColor(this, R.color.teal_200)),
-                    "background1" to BackgroundColorSpan(ContextCompat.getColor(this, R.color.purple_500))
+                    "background0" to BackgroundColorSpan(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.teal_200
+                        )
+                    ),
+                    "background1" to BackgroundColorSpan(
+                        ContextCompat.getColor(
+                            this,
+                            R.color.purple_500
+                        )
+                    )
                 )
             )
         )
