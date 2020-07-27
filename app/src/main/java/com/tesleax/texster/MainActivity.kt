@@ -15,12 +15,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        setupThanksTextView()
+        setupWebsiteTextView()
+        setupBulletTextView()
+    }
+
+    private fun setupThanksTextView() {
         mainThanksTextView.text = getXmlStyledString(
             stringResId = R.string.thanks_message,
             annotationOption = AnnotationOption(
                 replacementList = listOf("username" to "tesleax")
             )
         )
+    }
+
+    private fun setupWebsiteTextView() {
         val action2: (CharSequence) -> Unit = {
             startAction2()
         }
@@ -32,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             )
         )
         mainWebsiteTextView.movementMethod = LinkMovementMethod.getInstance()
+    }
+
+    private fun setupBulletTextView() {
         mainBulletTextView.text = getXmlStyledString(
             stringResId = R.string.bullet_message,
             annotationOption = AnnotationOption(
@@ -39,16 +51,10 @@ class MainActivity : AppCompatActivity() {
                     "bullet0" to BulletSpan(),
                     "bullet1" to BulletSpan(),
                     "background0" to BackgroundColorSpan(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.teal_200
-                        )
+                        ContextCompat.getColor(this, R.color.teal_200)
                     ),
                     "background1" to BackgroundColorSpan(
-                        ContextCompat.getColor(
-                            this,
-                            R.color.purple_500
-                        )
+                        ContextCompat.getColor(this, R.color.purple_500)
                     )
                 )
             )
