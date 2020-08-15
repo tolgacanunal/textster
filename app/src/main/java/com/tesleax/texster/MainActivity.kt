@@ -2,53 +2,48 @@ package com.tesleax.texster
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.method.LinkMovementMethod
 import android.text.style.BackgroundColorSpan
 import android.text.style.BulletSpan
 import android.text.style.RelativeSizeSpan
-import android.text.style.ScaleXSpan
-import android.widget.Toast
+import android.util.Log
 import androidx.core.content.ContextCompat
-import com.tesleax.textster.AnnotationOption
-import com.tesleax.textster.getXmlStyledString
+import com.tesleax.textster.AnnotatedString
+import com.tesleax.textster.XmlStyleOption
+import com.tesleax.textster.getStyledCharSequence
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlin.system.measureTimeMillis
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        setupThanksTextView()
-        setupWebsiteTextView()
-        setupBulletTextView()
+        Log.d("Textster", measureTimeMillis {
+            setupThanksTextView()
+            setupWebsiteTextView()
+            setupBulletTextView()
+        }.toString())
     }
 
     private fun setupThanksTextView() {
-        mainThanksTextView.text = getXmlStyledString(
-            stringResId = R.string.thanks_message,
-            annotationOption = AnnotationOption(
-                replacementList = listOf("username" to "user")
-            )
-        )
+        mainThanksTextView.text = AnnotatedString(
+            resId = R.string.thanks_message,
+            xmlStyleOption = XmlStyleOption(replacementList = listOf("username" to "user"))
+        ).getStyledCharSequence(this)
     }
 
     private fun setupWebsiteTextView() {
-        val action2: (CharSequence) -> Unit = {
-            startAction2()
-        }
-        mainWebsiteTextView.text = getXmlStyledString(
-            stringResId = R.string.website_message,
-            annotationOption = AnnotationOption(
-                replacementList = listOf("githuburl" to GITHUB_URL),
-                clickableList = listOf("action2" to action2)
+        mainWebsiteTextView.text = AnnotatedString(
+            resId = R.string.website_message,
+            xmlStyleOption = XmlStyleOption(
+                replacementList = listOf("githuburl" to GITHUB_URL)
             )
-        )
-        mainWebsiteTextView.movementMethod = LinkMovementMethod.getInstance()
+        ).getStyledCharSequence(this)
     }
 
     private fun setupBulletTextView() {
-        mainBulletTextView.text = getXmlStyledString(
-            stringResId = R.string.bullet_message,
-            annotationOption = AnnotationOption(
+        mainBulletTextView.text = AnnotatedString(
+            resId = R.string.bullet_message,
+            xmlStyleOption = XmlStyleOption(
                 replacementList = listOf(
                     "first_bullet_number" to "0"
                 ),
@@ -66,11 +61,7 @@ class MainActivity : AppCompatActivity() {
                     "bullet_text_scale" to RelativeSizeSpan(1.5f)
                 )
             )
-        )
-    }
-
-    private fun startAction2() {
-        Toast.makeText(this, "Action 2 Clicked", Toast.LENGTH_SHORT).show()
+        ).getStyledCharSequence(this)
     }
 
     companion object {

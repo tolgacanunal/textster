@@ -1,7 +1,6 @@
 package com.tesleax.textster
 
-data class AnnotationOption(
+data class XmlStyleOption(
     val replacementList: List<Pair<CharSequence, CharSequence>> = emptyList(),
-    val clickableList: List<Pair<CharSequence, (CharSequence) -> Unit>> = emptyList(),
     val customAnnotations: List<Pair<CharSequence, Any>> = emptyList()
 )

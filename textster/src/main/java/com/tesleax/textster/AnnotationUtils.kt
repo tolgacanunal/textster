@@ -10,11 +10,8 @@ import android.view.View
 import androidx.annotation.StringRes
 import androidx.core.content.res.ResourcesCompat
 
-fun Context.getXmlStyledString(
-    @StringRes stringResId: Int,
-    annotationOption: AnnotationOption
-): CharSequence {
-    val xmlText = resources.getText(stringResId)
+fun AnnotatedString.getStyledCharSequence(context: Context): CharSequence {
+    val xmlText = context.resources.getText(resId)
     if (xmlText !is SpannedString) {
         return xmlText
     }
@@ -26,29 +23,26 @@ fun Context.getXmlStyledString(
                 spannableString.applyType(annotation)
             }
             "replacement" -> {
-                val replacementValue =
-                    annotationOption.replacementList.find { it.first == annotation.value }?.second
-                if (replacementValue != null) {
+                xmlStyleOption.replacementList.find { (key, _) ->
+                    key == annotation.value
+                }?.let { (_, replacementValue) ->
                     spannableString.replaceAnnotation(annotation, replacementValue)
                 }
             }
             "color" -> {
                 spannableString.colorizeAnnotation(annotation)
             }
-            "click" -> {
-                spannableString.applyClickable(annotation, annotationOption.clickableList)
-            }
             "url" -> {
                 spannableString.applyUrlAnnotation(annotation)
             }
             "font" -> {
-                spannableString.applyFontAnnotation(this, annotation)
+                spannableString.applyFontAnnotation(context, annotation)
             }
             "custom" -> {
-                val customAnnotation =
-                    annotationOption.customAnnotations.find { it.first == annotation.value }
-                if (customAnnotation != null) {
-                    spannableString.applySpan(customAnnotation.second, annotation)
+                xmlStyleOption.customAnnotations.find { (key, _) ->
+                    key == annotation.value
+                }?.let { (_, span) ->
+                    spannableString.applySpan(span, annotation)
                 }
             }
         }
@@ -77,41 +71,16 @@ private fun SpannableStringBuilder.applySpan(span: Any, annotation: Annotation) 
 }
 
 private fun SpannableStringBuilder.applyType(annotation: Annotation) {
-    val span: Any? = when (annotation.value) {
+    when (annotation.value) {
         "bold" -> StyleSpan(Typeface.BOLD)
-        "underline" -> UnderlineSpan()
         "italic" -> StyleSpan(Typeface.ITALIC)
-        "bullet" -> BulletSpan()
         "bolditalic" -> StyleSpan(Typeface.BOLD_ITALIC)
+        "underline" -> UnderlineSpan()
+        "bullet" -> BulletSpan()
         else -> null
+    }?.let { span ->
+        applySpan(span, annotation)
     }
-    if (span != null) {
-        setSpan(
-            span,
-            getSpanStart(annotation),
-            getSpanEnd(annotation),
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-    }
-}
-
-private fun SpannableStringBuilder.applyClickable(
-    annotation: Annotation,
-    clickableList: List<Pair<CharSequence, (CharSequence) -> Unit>>
-) {
-    val clickableSpan = object : ClickableSpan() {
-        override fun onClick(widget: View) {
-            val relatedClickableItem = clickableList.find { clickableItem ->
-                clickableItem.first == annotation.value
-            }
-            relatedClickableItem?.second?.invoke(relatedClickableItem.first)
-        }
-
-        override fun updateDrawState(ds: TextPaint) {
-            ds.isUnderlineText = false
-        }
-    }
-    applySpan(clickableSpan, annotation)
 }
 
 private fun SpannableStringBuilder.colorizeAnnotation(annotation: Annotation) {
@@ -123,12 +92,10 @@ private fun SpannableStringBuilder.applyUrlAnnotation(annotation: Annotation) {
 }
 
 private fun SpannableStringBuilder.applyFontAnnotation(context: Context, annotation: Annotation) {
-    val fontName = annotation.value
-    val typeface = ResourcesCompat.getFont(
-        context,
-        context.resources.getIdentifier(fontName, "font", context.packageName)
+    val type = context.resources.getIdentifier(
+        annotation.value, "font", context.packageName
     )
-    if (typeface != null) {
+    ResourcesCompat.getFont(context, type)?.let { typeface ->
         applySpan(CustomTypefaceSpan(typeface), annotation)
     }
 }
