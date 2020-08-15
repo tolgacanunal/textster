@@ -1,5 +1,9 @@
 package com.tesleax.textster
 
+import android.content.Context
+import android.text.Annotation
+import android.text.SpannableStringBuilder
+import android.text.SpannedString
 import androidx.annotation.StringRes
 
 data class AnnotatedString(
@@ -7,4 +11,44 @@ data class AnnotatedString(
     val resId: Int,
 
     val xmlStyleOption: XmlStyleOption = XmlStyleOption()
-)
+) {
+    fun getStyledCharSequence(context: Context): CharSequence {
+        val xmlText = context.resources.getText(resId)
+        if (xmlText !is SpannedString) {
+            return xmlText
+        }
+
+        val spannableString = SpannableStringBuilder(xmlText)
+        xmlText.getSpans(0, xmlText.length, Annotation::class.java).forEach { annotation ->
+            when (annotation.key) {
+                "type" -> {
+                    spannableString.applyType(annotation)
+                }
+                "replacement" -> {
+                    xmlStyleOption.replacementList.find { (key, _) ->
+                        key == annotation.value
+                    }?.let { (_, replacementValue) ->
+                        spannableString.replaceAnnotation(annotation, replacementValue)
+                    }
+                }
+                "color" -> {
+                    spannableString.colorizeAnnotation(annotation)
+                }
+                "url" -> {
+                    spannableString.applyUrlAnnotation(annotation)
+                }
+                "font" -> {
+                    spannableString.applyFontAnnotation(context, annotation)
+                }
+                "custom" -> {
+                    xmlStyleOption.customAnnotations.find { (key, _) ->
+                        key == annotation.value
+                    }?.let { (_, span) ->
+                        spannableString.applySpan(span, annotation)
+                    }
+                }
+            }
+        }
+        return spannableString
+    }
+}
