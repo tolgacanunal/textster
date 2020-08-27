@@ -38,7 +38,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message)
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksMessageTextView.context)
 ```
 
-### font:
+### Font:
 
 <img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/font.png" width="600px" />
 
@@ -51,7 +51,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message)
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksMessageTextView.context)
 ```
 
-### color:
+### Color:
 
 <img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/colorrgb.png" width="600px" />
 
@@ -79,7 +79,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message, thanksXmlSt
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context)
 ```
 
-### replacement:
+### Replacement:
 
 <img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/replacement.png" width="600px" />
 ```
@@ -93,7 +93,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message, thanksXmlSt
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context)
 ```
 
-### custom stylization with [Spans](https://developer.android.com/reference/android/text/style/AbsoluteSizeSpan):
+### Custom stylization with [Spans](https://developer.android.com/reference/android/text/style/AbsoluteSizeSpan):
 
 <img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/custom.png" width="600px" />
 
