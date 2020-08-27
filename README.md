@@ -27,6 +27,8 @@ Usage:
 
 ### bold:
 
+<img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/bold.png" width="600px" />
+
 ```
 <string name="thanks_message"><annotation type="bold">Thanks</annotation> for reading through the documentation.</string>
 ```
@@ -37,6 +39,8 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksM
 ```
 
 ### font:
+
+<img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/font.png" width="600px" />
 
 ```
 <string name="thanks_message"><annotation font="publicsans_medium">Thanks</annotation> for reading through the documentation.</string>
@@ -49,6 +53,8 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksM
 
 ### color:
 
+<img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/colorrgb.png" width="600px" />
+
 ```
 <string name="thanks_message"><annotation color="#FF5733">Thanks</annotation> for reading through the documentation.</string>
 ```
@@ -59,6 +65,8 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksM
 ```
 
 If you don't want to give hardcoded RGB color, you can use the example below:
+
+<img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/colorres.png" width="600px" />
 
 ```
 <string name="thanks_message"><annotation custom="thanks_color">Thanks</annotation> for reading through the documentation.</string>
@@ -73,6 +81,7 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context
 
 ### replacement:
 
+<img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/replacement.png" width="600px" />
 ```
 <string name="thanks_message">Thanks <annotation replacement="username">usernamePlaceholder</annotation> for reading through the documentation.</string>
 ```
@@ -85,6 +94,8 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context
 ```
 
 ### custom stylization with [Spans](https://developer.android.com/reference/android/text/style/AbsoluteSizeSpan):
+
+<img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/custom.png" width="600px" />
 
 ```
 <string name="thanks_message"><annotation custom="bullet">Thanks <annotation custom="icon"> </annotation> for reading through the documentation.</annotation></string>
