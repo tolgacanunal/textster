@@ -25,7 +25,7 @@ dependencies {
 Usage:
 --------
 
-#### bold:
+### bold:
 
 ```
 <string name="thanks_message"><annotation type="bold">Thanks</annotation><annotation type="bold"> for reading through the documentation.</string>
@@ -36,7 +36,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message)
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksMessageTextView.context)
 ```
 
-#### font:
+### font:
 
 ```
 <string name="thanks_message"><annotation font="publicsans_medium">Thanks</annotation> for reading through the documentation.</string>
@@ -47,7 +47,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message)
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(thanksMessageTextView.context)
 ```
 
-#### color:
+### color:
 
 ```
 <string name="thanks_message"><annotation color="#FF5733">Thanks</annotation> for reading through the documentation.</string>
@@ -71,7 +71,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message, thanksXmlSt
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context)
 ```
 
-#### replacement:
+### replacement:
 
 ```
 <string name="thanks_message">Thanks <annotation replacement="username">usernamePlaceholder</annotation> for reading through the documentation.</string>
@@ -84,7 +84,7 @@ val thanksAnnotatedString = AnnotatedString(R.string.thanks_message, thanksXmlSt
 thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context)
 ```
 
-#### custom stylization with [Spans](https://developer.android.com/reference/android/text/style/AbsoluteSizeSpan):
+### custom stylization with [Spans](https://developer.android.com/reference/android/text/style/AbsoluteSizeSpan):
 
 ```
 <string name="thanks_message"><annotation custom="bullet">Thanks <annotation custom="icon"> </annotation> for reading through the documentation.</annotation></string>
