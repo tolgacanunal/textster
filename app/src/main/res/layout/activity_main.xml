@@ -24,4 +24,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
 
+    <TextView
+        android:id="@+id/mainThanksBoldTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/mainThanksFontTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/mainThanksRGBTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/mainThanksColorResTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/mainThanksReplacementTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/mainThanksCustomTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"/>
+
 </LinearLayout>

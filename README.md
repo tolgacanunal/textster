@@ -28,7 +28,7 @@ Usage:
 ### bold:
 
 ```
-<string name="thanks_message"><annotation type="bold">Thanks</annotation><annotation type="bold"> for reading through the documentation.</string>
+<string name="thanks_message"><annotation type="bold">Thanks</annotation> for reading through the documentation.</string>
 ```
 
 ```

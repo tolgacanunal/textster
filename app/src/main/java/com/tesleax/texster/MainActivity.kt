@@ -2,14 +2,11 @@ package com.tesleax.texster
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.text.style.BackgroundColorSpan
-import android.text.style.BulletSpan
-import android.text.style.RelativeSizeSpan
+import android.text.style.*
 import android.util.Log
 import androidx.core.content.ContextCompat
 import com.tesleax.textster.AnnotatedString
 import com.tesleax.textster.XmlStyleOption
-import com.tesleax.textster.getStyledCharSequence
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlin.system.measureTimeMillis
 
@@ -21,6 +18,12 @@ class MainActivity : AppCompatActivity() {
             setupThanksTextView()
             setupWebsiteTextView()
             setupBulletTextView()
+            setupThanksBoldTextView()
+            setupThanksColorResTextView()
+            setupThanksCustomTextView()
+            setupThanksReplacementTextView()
+            setupThanksFontTextView()
+            setupThanksRGBTextView()
         }.toString())
     }
 
@@ -59,6 +62,55 @@ class MainActivity : AppCompatActivity() {
                         ContextCompat.getColor(this, R.color.red_alpha10)
                     ),
                     "bullet_text_scale" to RelativeSizeSpan(1.5f)
+                )
+            )
+        ).getStyledCharSequence(this)
+    }
+
+    private fun setupThanksBoldTextView() {
+        mainThanksBoldTextView.text = AnnotatedString(
+            resId = R.string.thanks_message_bold
+        ).getStyledCharSequence(this)
+    }
+
+    private fun setupThanksFontTextView() {
+        mainThanksFontTextView.text = AnnotatedString(
+            resId = R.string.thanks_message_font
+        ).getStyledCharSequence(this)
+    }
+
+    private fun setupThanksRGBTextView() {
+        mainThanksRGBTextView.text = AnnotatedString(
+            resId = R.string.thanks_message_rgb
+        ).getStyledCharSequence(this)
+    }
+
+    private fun setupThanksColorResTextView() {
+        val thanksColor = ContextCompat.getColor(this, R.color.purple_500)
+        mainThanksColorResTextView.text = AnnotatedString(
+            resId = R.string.thanks_message_color_resource,
+            xmlStyleOption = XmlStyleOption(
+                customAnnotations = listOf("thanks_color" to ForegroundColorSpan(thanksColor))
+            )
+        ).getStyledCharSequence(this)
+    }
+
+    private fun setupThanksReplacementTextView() {
+        val username = "Yumi"
+        mainThanksReplacementTextView.text = AnnotatedString(
+            resId = R.string.thanks_message_replacement,
+            xmlStyleOption = XmlStyleOption(replacementList = listOf("username" to username))
+        ).getStyledCharSequence(this)
+    }
+
+    private fun setupThanksCustomTextView() {
+        val thanksColor = ContextCompat.getColor(this, R.color.purple_200)
+        mainThanksCustomTextView.text = AnnotatedString(
+            resId = R.string.thanks_message_custom,
+            xmlStyleOption = XmlStyleOption(
+                customAnnotations = listOf(
+                    "background_color" to BackgroundColorSpan(thanksColor),
+                    "icon" to ImageSpan(this, R.drawable.ic_baseline_android_24)
                 )
             )
         ).getStyledCharSequence(this)
