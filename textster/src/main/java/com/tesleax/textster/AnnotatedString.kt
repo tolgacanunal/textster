@@ -1,17 +1,19 @@
 package com.tesleax.textster
 
 import android.content.Context
+import android.os.Parcelable
 import android.text.Annotation
 import android.text.SpannableStringBuilder
 import android.text.SpannedString
-import androidx.annotation.StringRes
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class AnnotatedString(
-    @StringRes
     val resId: Int,
 
     val xmlStyleOption: XmlStyleOption = XmlStyleOption()
-) {
+): Parcelable {
+
     fun getStyledCharSequence(context: Context): CharSequence {
         val xmlText = context.resources.getText(resId)
         if (xmlText !is SpannedString) {
@@ -28,14 +30,14 @@ data class AnnotatedString(
                     xmlStyleOption.replacementList.find { (key, _) ->
                         key == annotation.value
                     }?.let { (_, replacementValue) ->
-                        spannableString.replaceAnnotation(annotation, replacementValue)
+                        spannableString.replaceAnnotation(
+                            annotation,
+                            replacementValue
+                        )
                     }
                 }
                 "color" -> {
                     spannableString.colorizeAnnotation(annotation)
-                }
-                "url" -> {
-                    spannableString.applyUrlAnnotation(annotation)
                 }
                 "font" -> {
                     spannableString.applyFontAnnotation(context, annotation)

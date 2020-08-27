@@ -6,22 +6,16 @@ import android.graphics.Typeface
 import android.text.*
 import android.text.Annotation
 import android.text.style.*
-import android.view.View
-import androidx.annotation.StringRes
 import androidx.core.content.res.ResourcesCompat
 
-internal fun SpannableStringBuilder.replaceAnnotation(
+fun SpannableStringBuilder.replaceAnnotation(
     annotation: Annotation,
     replacementValue: CharSequence
 ) {
-    replace(
-        getSpanStart(annotation),
-        getSpanEnd(annotation),
-        replacementValue
-    )
+    replace(getSpanStart(annotation), getSpanEnd(annotation), replacementValue)
 }
 
-internal fun SpannableStringBuilder.applySpan(span: Any, annotation: Annotation) {
+fun SpannableStringBuilder.applySpan(span: Any, annotation: Annotation) {
     setSpan(
         span,
         getSpanStart(annotation),
@@ -30,7 +24,7 @@ internal fun SpannableStringBuilder.applySpan(span: Any, annotation: Annotation)
     )
 }
 
-internal fun SpannableStringBuilder.applyType(annotation: Annotation) {
+fun SpannableStringBuilder.applyType(annotation: Annotation) {
     when (annotation.value) {
         "bold" -> StyleSpan(Typeface.BOLD)
         "italic" -> StyleSpan(Typeface.ITALIC)
@@ -43,15 +37,11 @@ internal fun SpannableStringBuilder.applyType(annotation: Annotation) {
     }
 }
 
-internal fun SpannableStringBuilder.colorizeAnnotation(annotation: Annotation) {
+fun SpannableStringBuilder.colorizeAnnotation(annotation: Annotation) {
     applySpan(ForegroundColorSpan(Color.parseColor(annotation.value)), annotation)
 }
 
-internal fun SpannableStringBuilder.applyUrlAnnotation(annotation: Annotation) {
-    applySpan(URLSpan(annotation.value), annotation)
-}
-
-internal fun SpannableStringBuilder.applyFontAnnotation(context: Context, annotation: Annotation) {
+fun SpannableStringBuilder.applyFontAnnotation(context: Context, annotation: Annotation) {
     val type = context.resources.getIdentifier(
         annotation.value, "font", context.packageName
     )
