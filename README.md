@@ -18,7 +18,7 @@ allprojects {
 
 ```
 dependencies {
-    implementation 'com.github.tolgacanunal:textster:0.1.0'
+    implementation 'com.github.tolgacanunal:textster:0.1.2'
 }
 ```
 
