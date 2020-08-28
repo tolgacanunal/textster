@@ -102,7 +102,14 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context
 ```
 
 ```
-val thanksXmlStyleOption = XmlStyleOption(customAnnotations = listOf("bullet" to BulletSpan(), "icon" to ImageSpan(context, R.drawable.ic_user))
-val thanksAnnotatedString = AnnotatedString(R.string.thanks_message, thanksXmlStyleOption)
-thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context)
+val thanksColor = ContextCompat.getColor(this, R.color.purple_200)
+thanksMessageTextView.text = AnnotatedString(
+   resId = R.string.thanks_message_custom,
+   xmlStyleOption = XmlStyleOption(
+        customAnnotations = listOf(
+            "background_color" to BackgroundColorSpan(thanksColor),
+            "android_icon" to ImageSpan(this, R.drawable.ic_baseline_android_24)
+            )
+        )
+).getStyledCharSequence(this)
 ```

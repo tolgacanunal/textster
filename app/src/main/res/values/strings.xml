@@ -9,5 +9,5 @@
     <string name="thanks_message_rgb"><annotation color="#FF5733">Thanks</annotation> for reading through the documentation.</string>
     <string name="thanks_message_color_resource"><annotation custom="thanks_color">Thanks</annotation> for reading through the documentation.</string>
     <string name="thanks_message_replacement">Thanks <annotation replacement="username">usernamePlaceholder</annotation> for reading through the documentation.</string>
-    <string name="thanks_message_custom"><annotation custom="background_color">Thanks</annotation> <annotation custom="icon"> </annotation> for reading through the documentation.</string>
+    <string name="thanks_message_custom"><annotation custom="background_color">Thanks</annotation> <annotation custom="android_icon"> </annotation> for reading through the documentation.</string>
 </resources>

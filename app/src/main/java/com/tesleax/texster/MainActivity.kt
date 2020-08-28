@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
             xmlStyleOption = XmlStyleOption(
                 customAnnotations = listOf(
                     "background_color" to BackgroundColorSpan(thanksColor),
-                    "icon" to ImageSpan(this, R.drawable.ic_baseline_android_24)
+                    "android_icon" to ImageSpan(this, R.drawable.ic_baseline_android_24)
                 )
             )
         ).getStyledCharSequence(this)
