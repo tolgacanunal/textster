@@ -82,6 +82,7 @@ thanksMessageTextView.text = thanksAnnotatedString.getStyledCharSequence(context
 ### Replacement:
 
 <img src="https://raw.githubusercontent.com/tolgacanunal/textster/master/assets/replacement.png" width="600px" />
+
 ```
 <string name="thanks_message">Thanks <annotation replacement="username">usernamePlaceholder</annotation> for reading through the documentation.</string>
 ```
