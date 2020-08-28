@@ -1,6 +1,6 @@
 This is not the library but let's say a few methods to do the job for you. 
 
-Here's the [article](https://medium.com/@tesleax/styled-texts-for-android-replaceable-and-localizable-dc0b25d01fe9) to show how things are working. If you don't want to add library, you can get the simple method to do job for you.
+Here's the [blog](https://medium.com/@tesleax/styled-texts-for-android-replaceable-and-localizable-dc0b25d01fe9) to show how things are working. If you don't want to add library, you can get the simple method to do job for you.
 
 Textster help you to create stylized texts which are localizable and dynamic.
 
